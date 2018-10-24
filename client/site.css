@@ -1,41 +1,30 @@
-html {
-    height: 100%
-}
-
-body {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-}
-
-.flex-container {
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .test {
     border: 1px black dotted;
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-.video-container {
-    flex-grow: 3;
-    text-align: center;
-    height: 100%;
-}
-
-.subtitle-container {
-    flex-grow: 2;
+#property-container {
     display: flex;
     flex-direction: column;
 }
 
-video, .video {
-    min-height: 250px;
-    max-height: 450px;
-    height: 100%;
-    width: 75%;
+.property {
+    display: flex;
+    text-align: center;
+    border: 1px black solid;
+}
+
+.property-title {
+    flex-grow: 3;
+    border-right: 1px black solid;
+}
+
+.property-description {
+    flex-grow: 2;
+}
+
+.description {
+    border-bottom: 1px black solid;
 }
 
 .field {
