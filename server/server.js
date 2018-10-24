@@ -1,8 +1,16 @@
 const express = require('express');
 const { Client } = require("pg");
+const bodyParser = require("body-parser");
 
 const app = express();
 const port = process.env.PORT || 8080;
+
+// serve our index.html file
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+app.use(express.static("client"));
 
 const credentials = {
     user: "p32004c",
@@ -15,9 +23,6 @@ const credentials = {
 const client = new Client(credentials);
 client.connect();
 
-// serve our index.html file
-app.use(express.static("."));
-
 // Endpoints
 // refer to https://expressjs.com/en/guide/routing.html
 app.get("/endpoint", (req, res) => {
@@ -27,6 +32,11 @@ app.get("/endpoint", (req, res) => {
 app.get("/testsql", async (req, res) => {
     const data = await client.query('SELECT hello FROM test');
     res.send(data.rows);
+});
+
+app.post("/login", async (req, res) => {
+   console.log(req.body);
+   res.send(req.body);
 });
 
 // Start server

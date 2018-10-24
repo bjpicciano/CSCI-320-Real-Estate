@@ -37,3 +37,7 @@ video, .video {
     height: 100%;
     width: 75%;
 }
+
+.field {
+    margin: 3px;
+}
