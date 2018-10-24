@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="site.css">
 
     <script src="api.js"></script>
+    <script src="auth.js"></script>
     <script src="login.js"></script>
 </head>
 <body>
@@ -24,6 +25,13 @@
             <input id="password" name="password" type="password" required>
         </div>
         <input type="submit" value="Submit">
+
+        <p class="error hidden">Your username or password is incorrect. Please try again</p>
     </form>
+
+    <div id="logout" class="center hidden">
+        <h3>You are already logged in</h3>
+        <button onclick="redirect_logout()">Logout</button>
+    </div>
 </body>
 </html>

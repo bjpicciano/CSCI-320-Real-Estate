@@ -1,5 +1,5 @@
 const express = require('express');
-const { Client } = require("pg");
+const {Client} = require("pg");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -25,8 +25,17 @@ client.connect();
 
 // Endpoints
 app.post("/login", async (req, res) => {
-   console.log(req.body);
-   res.send(req.body);
+    const body = req.body;
+
+    const query = `
+        SELECT type
+        FROM account_type
+        INNER JOIN users ON account_type.id = users.account_type_id
+        WHERE username = '${body.username}' AND password = '${body.password}'
+    `;
+
+    let data = (await client.query(query)).rows;
+    res.send(JSON.stringify(data));
 });
 
 app.get("/availableproperties", async (req, res) => {
@@ -48,8 +57,10 @@ app.get("/availableproperties", async (req, res) => {
         INNER JOIN address ON property.address_id = address.id
         WHERE time_sold IS NULL
     `;
-    const data = await client.query(query);
-    res.send(data.rows);
+
+    const data = (await client.query(query)).rows;
+
+    res.send(JSON.stringify(data));
 });
 
 // Start server

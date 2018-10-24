@@ -2,7 +2,6 @@ window.onload = () => {
     get("availableproperties")
         .then(data => {
             for (let property of data) {
-                console.log(property);
                 createProperty(property)
             }
         })

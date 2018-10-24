@@ -1,3 +1,11 @@
+function handleErrors(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+
+    return response.json();
+}
+
 function post(url, data) {
     return fetch(url, {
         method: "POST",
@@ -5,7 +13,7 @@ function post(url, data) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-    }).then(res => res.json());
+    }).then(handleErrors);
 }
 
 function get(url) {
@@ -14,5 +22,5 @@ function get(url) {
         headers:{
             'Content-Type': 'application/json'
         }
-    }).then(res => res.json());
+    }).then(handleErrors);
 }

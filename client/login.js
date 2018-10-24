@@ -1,4 +1,9 @@
 window.onload = () => {
+    if (get_account_type()) {
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("logout").classList.remove("hidden");
+    }
+
     document.getElementById("login").addEventListener("submit", e => {
         e.preventDefault();
 
@@ -13,7 +18,7 @@ window.onload = () => {
         post("login", data)
             .then(data => {
                 console.log(data);
-                // window.location = "index.html";
+                redirect_login(data);
             })
             .catch(e => {
                 console.error(e);
