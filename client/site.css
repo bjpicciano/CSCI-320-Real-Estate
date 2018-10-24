@@ -15,12 +15,12 @@
 }
 
 .property-title {
-    flex-grow: 3;
+    flex: 3;
     border-right: 1px black solid;
 }
 
 .property-description {
-    flex-grow: 2;
+    flex: 2;
 }
 
 .description {

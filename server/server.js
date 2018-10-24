@@ -24,11 +24,6 @@ const client = new Client(credentials);
 client.connect();
 
 // Endpoints
-// refer to https://expressjs.com/en/guide/routing.html
-app.get("/endpoint", (req, res) => {
-    res.send("this is an endpoint");
-});
-
 app.post("/login", async (req, res) => {
    console.log(req.body);
    res.send(req.body);
@@ -54,11 +49,6 @@ app.get("/availableproperties", async (req, res) => {
         WHERE time_sold IS NULL
     `;
     const data = await client.query(query);
-    res.send(data.rows);
-});
-
-app.get("/testsql", async (req, res) => {
-    const data = await client.query('SELECT hello FROM test');
     res.send(data.rows);
 });
 
