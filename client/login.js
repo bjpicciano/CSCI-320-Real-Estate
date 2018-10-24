@@ -1,4 +1,6 @@
 window.onload = () => {
+    load_navbar();
+
     if (get_account_type()) {
         document.getElementById("login").classList.add("hidden");
         document.getElementById("logout").classList.remove("hidden");

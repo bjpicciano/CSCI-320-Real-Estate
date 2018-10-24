@@ -1,4 +1,6 @@
 window.onload = () => {
+    load_navbar();
+
     get("availableproperties")
         .then(data => {
             for (let property of data) {

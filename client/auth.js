@@ -30,7 +30,7 @@ function redirect_logout() {
 }
 
 function get_account_type() {
-    return sessionStorage.getItem("account_type");
+    return sessionStorage.getItem("account_type") || "";
 }
 
 function set_account_type(value) {
