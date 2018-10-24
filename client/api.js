@@ -7,3 +7,12 @@ function post(url, data) {
         body: JSON.stringify(data)
     }).then(res => res.json());
 }
+
+function get(url) {
+    return fetch(url, {
+        method: "GET",
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json());
+}

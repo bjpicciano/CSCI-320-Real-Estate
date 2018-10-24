@@ -29,14 +29,37 @@ app.get("/endpoint", (req, res) => {
     res.send("this is an endpoint");
 });
 
-app.get("/testsql", async (req, res) => {
-    const data = await client.query('SELECT hello FROM test');
-    res.send(data.rows);
-});
-
 app.post("/login", async (req, res) => {
    console.log(req.body);
    res.send(req.body);
+});
+
+app.get("/availableproperties", async (req, res) => {
+    const query = `
+        SELECT
+               street_num,
+               street_name,
+               city,
+               state,
+               zip,
+               apt_num,
+               price,
+               time_listed,
+               number_of_beds,
+               number_of_baths,
+               square_ft,
+               year_built
+        FROM property
+        INNER JOIN address ON property.address_id = address.id
+        WHERE time_sold IS NULL
+    `;
+    const data = await client.query(query);
+    res.send(data.rows);
+});
+
+app.get("/testsql", async (req, res) => {
+    const data = await client.query('SELECT hello FROM test');
+    res.send(data.rows);
 });
 
 // Start server

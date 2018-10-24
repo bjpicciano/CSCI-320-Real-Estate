@@ -1,38 +1,40 @@
 window.onload = () => {
-    //test call
-    createProperty({
-        "address": "132 Address St",
-        "price": "230,000",
-        "list_date": "10/24/2018",
-        "number_beds": "3",
-        "number_baths": "2",
-        "square_feet": "3250",
-        "year_built": "2010"
-    })
-}
+    get("availableproperties")
+        .then(data => {
+            for (let property of data) {
+                console.log(property);
+                createProperty(property)
+            }
+        })
+        .catch(e => {
+            console.error(e);
+        });
+};
 
 function createProperty(property) {    
     const propertyHTML = `
         <div class="property">
             <div class="property-title">
-                <h3 class="address">${property.address}</h3>
+                <h3 class="street-address-1">${property.street_num} ${property.street_name} ${property.apt_num ? "Apt " + property.apt_num : ""}</h3>
+                <h3 class="street-address-2">${property.city}, ${property.state} ${property.zip}</h3>
+
                 <p class="price">$${property.price}</p>
-                <p class="listed-date">Listed on ${property.list_date}</p>
+                <p class="listed-date">Listed on ${new Date(property.time_listed).toISOString().slice(0,10)}</p>
                 <button>Contact Agent</button>
             </div>
             
             <div class="property-description">
                 <div class="description">
                     <b class="property-name">Number of Beds</b>
-                    <p class="property-value">${property.number_beds}</p>
+                    <p class="property-value">${property.number_of_beds}</p>
                 </div>
                 <div class="description">
                     <b class="property-name">Number of Baths</b>
-                    <p class="property-value">${property.number_baths}</p>
+                    <p class="property-value">${property.number_of_baths}</p>
                 </div>
                 <div class="description">
                     <b class="property-name">Square Feet</b>
-                    <p class="property-value">${property.square_feet}</p>
+                    <p class="property-value">${property.square_ft}</p>
                 </div>
                 <div class="description">
                     <b class="property-name">Year Built</b>
