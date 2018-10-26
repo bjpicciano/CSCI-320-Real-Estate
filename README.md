@@ -9,6 +9,9 @@ Install the node packages:
 Start the node server:
 - ```npm start```
 
+Navigate to
+- [http://localhost:8080/](http:localhost:8080/)
+
 Start the node server with nodemon:  
 (refreshes the server everytime theres an update)
 - ```npm dev```
