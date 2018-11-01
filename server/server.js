@@ -1,6 +1,7 @@
 const express = require('express');
 const {Client} = require("pg");
 const bodyParser = require("body-parser");
+const PopulateDB = require("./generation/populate_db");
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -22,6 +23,8 @@ const credentials = {
 
 const client = new Client(credentials);
 client.connect();
+
+PopulateDB.InsertAgent(client, 1);
 
 // Endpoints
 app.post("/login", async (req, res) => {
