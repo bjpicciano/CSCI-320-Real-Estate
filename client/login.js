@@ -1,7 +1,8 @@
 window.onload = () => {
     loadNavbar();
 
-    if (getAccountType()) {
+    const accountType = getAccountType();
+    if (accountType) {
         document.getElementById("login").classList.add("hidden");
         document.getElementById("logout").classList.remove("hidden");
     }

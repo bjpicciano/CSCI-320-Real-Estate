@@ -13,7 +13,8 @@ window.onload = () => {
         });
 };
 
-function createProperty(property) {    
+function createProperty(property) {
+    const accountType = getAccountType();
     const propertyHTML = `
         <div class="property">
             <div class="property-title">
@@ -22,7 +23,7 @@ function createProperty(property) {
 
                 <p class="price">$${property.price}</p>
                 <p class="listed-date">Listed on ${new Date(property.time_listed).toISOString().slice(0,10)}</p>
-                <button>Contact Agent</button>
+                ${accountType === "client" ? "<button>Contact Agent</button>" : ""}
             </div>
             
             <div class="property-description">
