@@ -1,7 +1,7 @@
 window.onload = () => {
-    load_navbar();
+    loadNavbar();
 
-    if (get_account_type()) {
+    if (getAccountType()) {
         document.getElementById("login").classList.add("hidden");
         document.getElementById("logout").classList.remove("hidden");
     }
@@ -19,8 +19,7 @@ window.onload = () => {
 
         post("login", data)
             .then(data => {
-                console.log(data);
-                redirect_login(data);
+                redirectLogin(data);
             })
             .catch(e => {
                 console.error(e);

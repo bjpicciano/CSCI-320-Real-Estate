@@ -1,7 +1,6 @@
 const express = require('express');
 const {Client} = require("pg");
 const bodyParser = require("body-parser");
-const PopulateDB = require("./generation/populate_db");
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -39,7 +38,7 @@ app.post("/login", async (req, res) => {
     res.send(JSON.stringify(data));
 });
 
-app.get("/availableproperties", async (req, res) => {
+app.get("/availableProperties", async (req, res) => {
     const query = `
         SELECT
                street_num,

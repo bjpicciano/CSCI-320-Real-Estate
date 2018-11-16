@@ -1,7 +1,7 @@
 window.onload = () => {
-    load_navbar();
+    loadNavbar();
 
-    get("availableproperties")
+    get("availableProperties")
         .then(data => {
             for (let property of data) {
                 createProperty(property)
@@ -46,7 +46,7 @@ function createProperty(property) {
         </div>
     `;
     
-    const property_contianer = document.getElementById("property-container");
+    const propertyContianer = document.getElementById("property-container");
     
-    property_contianer.innerHTML += propertyHTML;
+    propertyContianer.innerHTML += propertyHTML;
 }

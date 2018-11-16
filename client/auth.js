@@ -3,7 +3,7 @@
 function login(data) {
     try {
         const type = data[0].type;
-        set_account_type(type);
+        setAccountType(type);
         return type;
     } catch {
         return false;
@@ -11,13 +11,13 @@ function login(data) {
 }
 
 function logout() {
-    sessionStorage.removeItem("account_type");
+    sessionStorage.removeItem("accountType");
 }
 
-function redirect_login(data) {
+function redirectLogin(data) {
     login(data);
 
-    if (get_account_type()) {
+    if (getAccountType()) {
         window.location = "index.html";
     } else {
         document.querySelector("#login > .error").classList.remove("hidden");
@@ -29,12 +29,12 @@ function redirect_logout() {
     window.location = "login.html";
 }
 
-function get_account_type() {
-    return sessionStorage.getItem("account_type") || "";
+function getAccountType() {
+    return sessionStorage.getItem("accountType") || "";
 }
 
-function set_account_type(value) {
+function setAccountType(value) {
     if (value) {
-        sessionStorage.setItem("account_type", value);
+        sessionStorage.setItem("accountType", value);
     }
 }

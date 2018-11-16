@@ -1,6 +1,6 @@
-function load_navbar() {
+function loadNavbar() {
     const toolbar = `
-        <h3>${get_account_type()}</h3>
+        <h3>${getAccountType()}</h3>
     `;
 
     const body = document.querySelector("body");
