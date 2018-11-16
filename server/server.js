@@ -24,8 +24,6 @@ const credentials = {
 const client = new Client(credentials);
 client.connect();
 
-PopulateDB.InsertAgent(client, 1);
-
 // Endpoints
 app.post("/login", async (req, res) => {
     const body = req.body;
