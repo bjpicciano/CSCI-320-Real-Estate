@@ -1,3 +1,12 @@
+/**
+ * Shared global functions to aid in development
+ */
+
+/**
+ * Prepends a navigation bar to the top of the HTML page.
+ * Changes based on sessions storage's accountType variable.
+ * Creates HTML out of HTML node objects.
+ */
 function loadNavbar() {
     const accountType = getAccountType();
 
