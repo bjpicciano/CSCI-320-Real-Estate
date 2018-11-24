@@ -9,7 +9,7 @@ window.onload = () => {
         })
         .catch(e => {
             console.error(e);
-            document.querySelector(".error").classList.remove("hidden");
+            showElement("error-connection");
         });
 };
 

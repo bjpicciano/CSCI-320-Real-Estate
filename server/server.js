@@ -21,7 +21,14 @@ const credentials = {
 };
 
 const client = new Client(credentials);
-client.connect();
+client.connect()
+    .then(() => {
+        console.log("Successfully connected to database");
+    })
+    .catch(e => {
+        console.error(e.stack);
+        client.end();
+    });
 
 // Endpoints
 app.post("/login", async (req, res) => {
@@ -33,9 +40,19 @@ app.post("/login", async (req, res) => {
         INNER JOIN users ON account_type.id = users.account_type_id
         WHERE username = '${body.username}' AND password = '${body.password}'
     `;
+    try {
+        const db = await client.query(query);
+        const data = db.rows;
 
-    let data = (await client.query(query)).rows;
-    res.send(JSON.stringify(data));
+        res.send(JSON.stringify(data));
+    } catch (e) {
+        const msg = {
+            message: "Unable to query database",
+            error: e.message
+        };
+        console.error(e.stack);
+        res.status(500).send(msg);
+    }
 });
 
 app.get("/availableProperties", async (req, res) => {
@@ -58,10 +75,19 @@ app.get("/availableProperties", async (req, res) => {
         WHERE time_sold IS NULL
     `;
 
-    const data = (await client.query(query)).rows;
-
-    res.send(JSON.stringify(data));
+    try {
+        const db = await client.query(query);
+        const data = db.rows;
+        res.send(JSON.stringify(data));
+    } catch (e) {
+        const msg = {
+            message: "Unable to query database",
+            error: e.message
+        };
+        console.error(e.stack);
+        res.status(500).send(msg);
+    }
 });
 
 // Start server
-app.listen(port, () => console.log("Listening at on port", port));
+app.listen(port, () => console.log("Listening on port", port));

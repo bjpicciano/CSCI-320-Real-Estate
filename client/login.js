@@ -18,10 +18,14 @@ window.onload = () => {
 
         post("login", data)
             .then(data => {
-                redirectLogin(data);
+                const success = redirectLogin(data);
+                if (!success) {
+                    showElement("error-login");
+                }
             })
             .catch(e => {
                 console.error(e);
+                showElement("error-connection");
             });
     });
 };

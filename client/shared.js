@@ -8,3 +8,11 @@ function loadNavbar() {
     const body = document.querySelector("body");
     body.innerHTML = toolbar + body.innerHTML;
 }
+
+function hideElement(elementId) {
+    document.getElementById(elementId).classList.add("hidden");
+}
+
+function showElement(elementId) {
+    document.getElementById(elementId).classList.remove("hidden");
+}

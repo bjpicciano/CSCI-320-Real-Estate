@@ -20,7 +20,7 @@ function redirectLogin(data) {
     if (getAccountType()) {
         window.location = "index.html";
     } else {
-        document.querySelector("#login > .error").classList.remove("hidden");
+        return false;
     }
 }
 
