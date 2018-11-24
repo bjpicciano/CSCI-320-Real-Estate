@@ -10,12 +10,13 @@
  * Think of it as the main function, the entry point to the program.
  */
 window.onload = () => {
-    spoofLoginAs("manager"); //TODO: remove, use while db is down
+    spoofLoginAs("manager"); //TODO: remove, use while db connection is down
 
     //load navbar from shared.js, based on the type of user logged in
     loadNavbar();
 
-    //fetch data from our server endpoint. Uses promises to handle callbacks and errors.
+    //fetch data from our server endpoint using get helper function.
+    //uses promises to handle callbacks and errors.
     get("availableProperties")
         .then(data => {
             hideElement("loader");
