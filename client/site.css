@@ -46,3 +46,12 @@
 .error {
     color: red;
 }
+
+.toolbar > a {
+    margin-right: 20px;
+}
+
+.toolbar > .active {
+    font-weight: bold;
+    box-shadow: 0 1px 1px black;
+}

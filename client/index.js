@@ -1,4 +1,5 @@
 window.onload = () => {
+    spoofLoginAs("manager"); //TODO: remove
     loadNavbar();
 
     get("availableProperties")
