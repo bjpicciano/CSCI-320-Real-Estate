@@ -90,15 +90,16 @@ app.get("/availableProperties", async (req, res) => {
 });
 
 app.get("/salesAgent", async (req, res) => {
+    const body = req.body;
+    const agent = body.agent;
 	const query = `
 		SELECT
                sell_price,
 			   time_sold,
         FROM sale
 		INNER JOIN property ON property.id = sale.property_id
-		WHERE agent_id = `+agent
-		;
-
+		WHERE agent_id = ${agent}
+    `;
 
     try {
         const db = await client.query(query);
@@ -115,6 +116,8 @@ app.get("/salesAgent", async (req, res) => {
 });
 
 app.get("/clientsAgent", async (req, res) => {
+    const body = req.body; //this is sent by the client, look at login endpoint
+    const agent_id = body.agent_id; //should use camelCase
 	const query = `
 		SELECT
          first_name,
@@ -122,8 +125,8 @@ app.get("/clientsAgent", async (req, res) => {
 			   phone_number,
 			   email,
         FROM client
-		WHERE client.agent_id = `+agent_id
-		;
+		WHERE client.agent_id = ${agent_id}
+		`;
 
 
     try {
@@ -147,10 +150,8 @@ app.get("/topAgents", async (req, res) => {
 			   last_name,
         FROM agent
 		WHERE agent.id = client.agent_id
-		ORDER BY number_of_sales DESC`
-		;
-
-
+		ORDER BY number_of_sales DESC
+		`;
 
     try {
         const db = await client.query(query);
