@@ -28,6 +28,12 @@ function loadNavbar() {
         appendAnchor(toolbarDiv, salesAnchor);
     }
 
+    const loginAnchor = createAnchor("login");
+    if (accountType) {
+        loginAnchor.innerHTML = "logout";
+    }
+    appendAnchor(toolbarDiv, loginAnchor);
+
     const divider = document.createElement("hr");
     toolbarDiv.appendChild(divider);
 
@@ -65,8 +71,8 @@ function showElement(elementId) {
     document.getElementById(elementId).classList.remove("hidden");
 }
 
-function prependElement(parenteEle, newEle, referenceEle) {
-    parenteEle.insertBefore(newEle, referenceEle);
+function prependElement(parentEle, newEle, referenceEle) {
+    parentEle.insertBefore(newEle, referenceEle);
 }
 
 /**

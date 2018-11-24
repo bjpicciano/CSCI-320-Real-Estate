@@ -54,4 +54,5 @@
 .toolbar > .active {
     font-weight: bold;
     box-shadow: 0 1px 1px black;
+    color: blue;
 }
