@@ -1,7 +1,21 @@
+/**
+ * JavaScript file for index.html.
+ * Bound to the HTML page by a script import within index.html's head tag.
+ * Utilizes other function calls from external files such as: api.js, auth.js, & shared.js.
+ * Each external file is imported through the html also as script tags. Loading order does matter.
+ */
+
+/**
+ * Called when the HTML page finishes loading.
+ * Think of it as the main function, the entry point to the program.
+ */
 window.onload = () => {
-    spoofLoginAs("manager"); //TODO: remove
+    spoofLoginAs("manager"); //TODO: remove, use while db is down
+
+    //load navbar from shared.js, based on the type of user logged in
     loadNavbar();
 
+    //fetch data from our server endpoint. Uses promises to handle callbacks and errors.
     get("availableProperties")
         .then(data => {
             hideElement("loader");
@@ -16,6 +30,10 @@ window.onload = () => {
         });
 };
 
+/**
+ * Uses a template string, propertyHTML, to build a property html entry from the database record.
+ * @param property - a property entry from the property table
+ */
 function createProperty(property) {
     const accountType = getAccountType();
     const propertyHTML = `
@@ -50,7 +68,7 @@ function createProperty(property) {
         </div>
     `;
     
-    const propertyContianer = document.getElementById("property-container");
+    const propertyContainer = document.getElementById("property-container");
     
-    propertyContianer.innerHTML += propertyHTML;
+    propertyContainer.innerHTML += propertyHTML;
 }

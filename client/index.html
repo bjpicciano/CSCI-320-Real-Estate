@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <title>Real Estate</title>
 
+    <!-- CSS imports -->
     <link rel="stylesheet" href="site.css">
 
+    <!-- JS imports -->
     <script src="api.js"></script>
     <script src="auth.js"></script>
     <script src="shared.js"></script>
     <script src="index.js"></script>
 </head>
 <body>
+    <!-- navbar is prepended to the top before the h1-->
     <h1>Available Properties for Sale</h1>
+
+    <!-- error is always on page, show/hide depending on state in js -->
     <p id="error-connection" class="error hidden">An error has occurred: Unable to load data</p>
 
     <div id="property-container">
         <div id="loader"></div>
-        <!-- Populated by JS -->
+        <!-- Populated by index.js -->
     </div>
 </body>
 </html>
