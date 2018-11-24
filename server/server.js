@@ -98,7 +98,7 @@ app.get("/salesAgent", async (req, res) => {
 		INNER JOIN property ON property.id = sale.property_id
 		WHERE agent_id = `+agent
 		;
-    
+
 
     try {
         const db = await client.query(query);
@@ -115,16 +115,16 @@ app.get("/salesAgent", async (req, res) => {
 });
 
 app.get("/clientsAgent", async (req, res) => {
-	const quey = `
+	const query = `
 		SELECT
-               first_name,
+         first_name,
 			   last_name,
 			   phone_number,
 			   email,
-        FROM client, agent
-		WHERE agent.id = client.agent_id`
+        FROM client
+		WHERE client.agent_id = `+agent_id
 		;
-    
+
 
     try {
         const db = await client.query(query);
@@ -140,7 +140,6 @@ app.get("/clientsAgent", async (req, res) => {
     }
 });
 
-
 app.get("/topAgents", async (req, res) => {
 	const query = `
 		SELECT
@@ -150,9 +149,9 @@ app.get("/topAgents", async (req, res) => {
 		WHERE agent.id = client.agent_id
 		ORDER BY number_of_sales DESC`
 		;
-    
 
-	
+
+
     try {
         const db = await client.query(query);
         const data = db.rows;
