@@ -4,13 +4,15 @@ window.onload = () => {
 
     get("availableProperties")
         .then(data => {
+            hideElement("loader");
             for (let property of data) {
-                createProperty(property)
+                createProperty(property);
             }
         })
         .catch(e => {
             console.error(e);
             showElement("error-connection");
+            hideElement("loader");
         });
 };
 
