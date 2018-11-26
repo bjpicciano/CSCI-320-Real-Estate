@@ -67,7 +67,6 @@ function appendAnchor(parent, anchor) {
     //display current page different than others
     if (pageName === href) {
         anchor.classList.add("active");
-        anchor.href = "#";
     }
 
     parent.appendChild(anchor);
