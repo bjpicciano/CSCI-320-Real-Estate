@@ -10,8 +10,6 @@
  * Think of it as the main function, the entry point to the program.
  */
 window.onload = () => {
-    spoofLoginAs("manager"); //TODO: remove, use while db connection is down
-
     //load navbar from shared.js, based on the type of user logged in
     loadNavbar();
 
