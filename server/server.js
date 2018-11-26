@@ -167,5 +167,27 @@ app.get("/topAgents", async (req, res) => {
     }
 });
 
+app.get("/offices", async(req, res) => {
+    const query = `
+    SELECT manager, street_num, street_name, apt_num, city, state, zip,  region
+    FROM office
+    INNER JOIN address on office.address_id = address.id
+    INNER JOIN region on office.region_id = region.id`;
+
+    try{
+        const db = await client.query(query);
+        const data = db.rows;
+        res.send(JSON.stringify(data));
+    }
+    catch (e){
+        const msg = {
+            message: "Unable to query database",
+            error: e.message
+        };
+        console.error(e.stack);
+        res.status(500).send(msg);
+    }
+});
+
 // Start server
 app.listen(port, () => console.log("Listening on port", port));
