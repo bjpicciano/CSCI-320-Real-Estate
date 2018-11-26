@@ -14,6 +14,34 @@
 <body>
     <h1>Offices</h1>
 
+    <div class="filter-container" onclick="toggleDropDown(this)">
+        <i class="fas fa-filter filter"></i>
+        <label>Filter</label>
+
+        <ul class="drop-down hidden">
+            <li class="drop-down-entry">
+                <a onclick="" href="#">
+                    Low to High Pending Sale
+                </a>
+            </li>
+            <li class="drop-down-entry">
+                <a onclick="" href="#">
+                    High to Low Pending Sale
+                </a>
+            </li>
+            <hr>
+            <li class="drop-down-entry">
+                <a onclick="" href="#">
+                    Low to High Completed Sale
+                </a>
+            </li>
+            <li class="drop-down-entry">
+                <a onclick="" href="#">
+                    High to Low Completed Sale
+                </a>
+            </li>
+    </div>
+    
      <!-- error is always on page, show/hide depending on state in js -->
     <p id="error-connection" class="error hidden">An error has occurred: Unable to load data</p>
 
