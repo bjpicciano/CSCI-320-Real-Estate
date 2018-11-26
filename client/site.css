@@ -135,3 +135,40 @@
         transform: rotate(360deg);
     }
 }
+
+#sales-container{
+	width: 50%;
+	float: left;
+}
+
+#agents-container{
+	width: 50%;
+	float: right;
+}
+
+#sale_title{
+	margin-left: 12%;
+}
+
+.sale{
+	padding: 2px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 75%;
+	margin-left: 12%;
+	margin-bottom: 5%;
+	background-color: #e9e6ff;
+}
+
+
+.rank{
+	padding:2px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 40%;
+	margin-bottom: 5%;
+	margin-right: 9%;
+	background-color: #e9e6ff;
+}
+
+
+
+

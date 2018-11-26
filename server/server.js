@@ -89,6 +89,7 @@ app.get("/availableProperties", async (req, res) => {
 });
 
 app.get("/salesAgent", async (req, res) => {
+	//need to return for specific agent?
 	const query = `
 		SELECT
                sell_price,
@@ -99,7 +100,7 @@ app.get("/salesAgent", async (req, res) => {
         FROM sale
 		INNER JOIN property ON property.id = sale.property_id
 		INNER JOIN client ON client.id = sale.seller_id
-		WHERE agent_id = `+agent
+		`
 		;
     
 
@@ -124,7 +125,6 @@ app.get("/topAgents", async (req, res) => {
 			   last_name,
 			   number_of_sales
         FROM agent
-		WHERE agent.id = client.agent_id
 		ORDER BY number_of_sales DESC`
 		;
     
