@@ -1,7 +1,7 @@
 window.onload = () => {
     loadNavbar();
 
-    get("");
+    // get("");
 };
 
 function createAgent(agent, agent_office){
