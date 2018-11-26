@@ -13,10 +13,11 @@ function loadNavbar() {
     const toolbarDiv = document.createElement("div");
     toolbarDiv.classList.add("toolbar");
 
-    const accountTypeHeader = document.createElement("h3");
-    accountTypeHeader.innerHTML = "Logged in as " + accountType;
-
-    toolbarDiv.appendChild(accountTypeHeader);
+    if (accountType) {
+        const accountTypeHeader = document.createElement("h3");
+        accountTypeHeader.innerHTML = "Logged in as " + accountType;
+        toolbarDiv.appendChild(accountTypeHeader);
+    }
 
     const homeAnchor = createAnchor("home", "index");
     appendAnchor(toolbarDiv, homeAnchor);
