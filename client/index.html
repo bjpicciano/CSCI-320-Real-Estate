@@ -5,6 +5,7 @@
     <title>Real Estate</title>
 
     <!-- CSS imports -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="site.css">
 
     <!-- JS imports -->
@@ -20,8 +21,16 @@
     <!-- error is always on page, show/hide depending on state in js -->
     <p id="error-connection" class="error hidden">An error has occurred: Unable to load data</p>
 
+    <div class="filter-container">
+        <i class="fas fa-filter filter"></i>
+        <label>Filter</label>
+        <div class="drop-down">
+
+        </div>
+    </div>
+
+    <div id="loader"></div>
     <div id="property-container">
-        <div id="loader"></div>
         <!-- Populated by index.js -->
     </div>
 </body>

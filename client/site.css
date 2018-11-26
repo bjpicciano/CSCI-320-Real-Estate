@@ -6,12 +6,15 @@
 #property-container {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .property {
     display: flex;
     text-align: center;
     border: 1px black solid;
+    border-radius: 5px;
+    margin-bottom: 25px;
 }
 
 .property-title {
@@ -55,6 +58,21 @@
     font-weight: bold;
     box-shadow: 0 1px 1px black;
     color: blue;
+}
+
+.filter-container {
+    float: right;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.drop-down {
+    border: 1px solid black;
+    border-radius: 1px;
+    position: absolute;
+    padding: 15px;
 }
 
 #loader,
