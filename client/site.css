@@ -66,13 +66,32 @@
     border: 1px solid black;
     border-radius: 5px;
     margin-bottom: 10px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .drop-down {
     border: 1px solid black;
     border-radius: 1px;
+    list-style-type: none;
     position: absolute;
-    padding: 15px;
+    margin:10px 8px 0 0;
+    /*padding: 15px 10px 10px 15px;*/
+    padding: 0;
+    background: white;
+    right: 0;
+    box-shadow: 3px 3px 5px black;
+}
+
+.drop-down-entry {
+    margin: 6px 0 6px 0;
+}
+
+.drop-down-entry > a {
+    padding: 3px 15px 3px 15px;
 }
 
 #loader,

@@ -21,12 +21,32 @@
     <!-- error is always on page, show/hide depending on state in js -->
     <p id="error-connection" class="error hidden">An error has occurred: Unable to load data</p>
 
-    <div class="filter-container">
+    <div class="filter-container" onclick="toggleDropDown(this)">
         <i class="fas fa-filter filter"></i>
         <label>Filter</label>
-        <div class="drop-down">
 
-        </div>
+        <ul class="drop-down hidden">
+            <li class="drop-down-entry">
+                <a href="#">Low to High Price</a>
+            </li>
+            <li class="drop-down-entry">
+                <a href="#">High to Low Price</a>
+            </li>
+            <hr>
+            <li class="drop-down-entry">
+                <a href="#">High to Low Sqr Ft</a>
+            </li>
+            <li class="drop-down-entry">
+                <a href="#">Low to High Sqr Ft</a>
+            </li>
+            <hr>
+            <li class="drop-down-entry">
+                <a href="#">Oldest Listings</a>
+            </li>
+            <li class="drop-down-entry">
+                <a href="#">Newest Listings</a>
+            </li>
+        </ul>
     </div>
 
     <div id="loader"></div>

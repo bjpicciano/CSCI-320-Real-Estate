@@ -80,8 +80,23 @@ function showElement(elementId) {
     document.getElementById(elementId).classList.remove("hidden");
 }
 
+function toggleEleVisibility(element) {
+    const classList = element.classList;
+
+    if (classList.contains("hidden")) {
+        classList.remove("hidden");
+    } else {
+        classList.add("hidden");
+    }
+}
+
 function prependElement(parentEle, newEle, referenceEle) {
     parentEle.insertBefore(newEle, referenceEle);
+}
+
+function toggleDropDown(parent) {
+    const dropDownEle = parent.querySelector(".drop-down");
+    toggleEleVisibility(dropDownEle);
 }
 
 /**
