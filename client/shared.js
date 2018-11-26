@@ -100,31 +100,6 @@ function toggleDropDown(parent) {
 }
 
 /**
- * Used to filter data from the filter drop-down menu.
- * @param containerId - the container to put the found elements
- * @param endpoint - the server's endpoint to get data from, includes get queries
- */
-function getFilteredData(containerId, endpoint) {
-    const container = document.getElementById(containerId);
-
-    container.innerHTML = "";
-    showElement("loader");
-
-    get(endpoint + query)
-        .then(data => {
-            hideElement("loader");
-            for (let property of data) {
-                createProperty(property);
-            }
-        })
-        .catch(e => {
-            console.error(e);
-            showElement("error-connection");
-            hideElement("loader");
-        });
-}
-
-/**
  * Helper function to mimic logging in for when the database is down
  * @param type - client, agent, or manager
  */
