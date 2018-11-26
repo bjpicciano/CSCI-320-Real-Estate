@@ -148,10 +148,14 @@ app.get("/topAgents", async (req, res) => {
 
 app.get("/offices", async(req, res) => {
     const query = `
-    SELECT manager, street_num, street_name, apt_num, city, state, zip,  region
-    FROM office
-    INNER JOIN address on office.address_id = address.id
-    INNER JOIN region on office.region_id = region.id`;
+        SELECT manager, street_num, street_name, apt_num, city, state, zip,  region,
+            count(*) filter (where completed = true ) as completed, count(*) filter (where completed = false ) as pending
+        FROM office
+        INNER JOIN address on office.address_id = address.id
+        INNER JOIN region on office.region_id = region.id
+        LEFT JOIN sale on office.id = sale.office_id
+        GROUP BY office.id, address.id, region.id, sale.id
+    `;
 
     try{
         const db = await client.query(query);
