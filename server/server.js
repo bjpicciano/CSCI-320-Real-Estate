@@ -90,44 +90,19 @@ app.get("/availableProperties", async (req, res) => {
 });
 
 app.get("/salesAgent", async (req, res) => {
-    const body = req.body;
-    const agent = body.agent;
 	const query = `
 		SELECT
                sell_price,
 			   time_sold,
+			   first_name,
+			   last_name,
+			   email
         FROM sale
 		INNER JOIN property ON property.id = sale.property_id
-		WHERE agent_id = ${agent}
-    `;
-
-    try {
-        const db = await client.query(query);
-        const data = db.rows;
-        res.send(JSON.stringify(data));
-    } catch (e) {
-        const msg = {
-            message: "Unable to query database",
-            error: e.message
-        };
-        console.error(e.stack);
-        res.status(500).send(msg);
-    }
-});
-
-app.get("/clientsAgent", async (req, res) => {
-    const body = req.body; //this is sent by the client, look at login endpoint
-    const agent_id = body.agent_id; //should use camelCase
-	const query = `
-		SELECT
-         first_name,
-			   last_name,
-			   phone_number,
-			   email,
-        FROM client
-		WHERE client.agent_id = ${agent_id}
-		`;
-
+		INNER JOIN client ON client.id = sale.seller_id
+		WHERE agent_id = `+agent
+		;
+    
 
     try {
         const db = await client.query(query);
@@ -148,11 +123,14 @@ app.get("/topAgents", async (req, res) => {
 		SELECT
                first_name,
 			   last_name,
+			   number_of_sales
         FROM agent
 		WHERE agent.id = client.agent_id
-		ORDER BY number_of_sales DESC
-		`;
+		ORDER BY number_of_sales DESC`
+		;
+    
 
+	
     try {
         const db = await client.query(query);
         const data = db.rows;
