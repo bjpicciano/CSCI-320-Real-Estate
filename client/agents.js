@@ -1,6 +1,5 @@
 window.onload = () => {
     loadNavbar();
-	
 	get("salesAgent")
         .then(data => {
             for (let sale of data) {
@@ -22,6 +21,7 @@ window.onload = () => {
             console.error(e);
             document.querySelector(".error").classList.remove("hidden");
         });
+
 };
 
 function createSale(sale) {
@@ -54,7 +54,6 @@ function createRank(agent) {
                 <h3 class="r_fn">${agent.first_name}</h3>
                 <h3 class="r_ln">${agent.last_name}</h3>
 				<h3 class="r_num">${agent.number_of_sales}</h3>
-               <!--- ${accountType === "agent" ? "<p>{$sale.owner}</p>" : ""} --->
    
         </div>
     `;

@@ -1,5 +1,4 @@
 window.onload = () => {
-    spoofLoginAs("manager");
     loadNavbar();
 
     get("clientsAgent")

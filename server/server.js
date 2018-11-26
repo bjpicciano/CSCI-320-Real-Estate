@@ -36,8 +36,7 @@ app.post("/login", async (req, res) => {
 
     const query = `
         SELECT type
-        FROM account_type
-        INNER JOIN users ON account_type.id = users.account_type_id
+        FROM users
         WHERE username = '${body.username}' AND password = '${body.password}'
     `;
     try {
