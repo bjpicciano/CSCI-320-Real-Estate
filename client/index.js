@@ -15,7 +15,13 @@ window.onload = () => {
 
     //fetch data from our server endpoint using get helper function.
     //uses promises to handle callbacks and errors.
-    get("availableProperties")
+    populateProperties()
+};
+
+function populateProperties(query = "") {
+    emptyProperties();
+
+    get("availableProperties" + query)
         .then(data => {
             hideElement("loader");
             for (let property of data) {
@@ -27,7 +33,7 @@ window.onload = () => {
             showElement("error-connection");
             hideElement("loader");
         });
-};
+}
 
 /**
  * Uses a template string, propertyHTML, to build a property html entry from the database record.
@@ -70,4 +76,12 @@ function createProperty(property) {
     const propertyContainer = document.getElementById("property-container");
     
     propertyContainer.innerHTML += propertyHTML;
+}
+
+function emptyProperties() {
+    const propertyContainer = document.getElementById("property-container");
+
+    propertyContainer.innerHTML = "";
+    showElement("loader");
+    hideElement("error-connection");
 }

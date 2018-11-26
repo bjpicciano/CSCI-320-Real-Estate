@@ -55,6 +55,7 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("/availableProperties", async (req, res) => {
+    const queries = req.query;
     const query = `
         SELECT
                street_num,
@@ -72,6 +73,7 @@ app.get("/availableProperties", async (req, res) => {
         FROM property
         INNER JOIN address ON property.address_id = address.id
         WHERE time_sold IS NULL
+        ${queries.order && queries.sort ? `ORDER BY ${queries.order} ${queries.sort}` : ""}
     `;
 
     try {

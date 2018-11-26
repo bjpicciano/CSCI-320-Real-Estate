@@ -27,24 +27,36 @@
 
         <ul class="drop-down hidden">
             <li class="drop-down-entry">
-                <a href="#">Low to High Price</a>
+                <a onclick="populateProperties('?order=price&sort=asc')" href="#">
+                    Low to High Price
+                </a>
             </li>
             <li class="drop-down-entry">
-                <a href="#">High to Low Price</a>
-            </li>
-            <hr>
-            <li class="drop-down-entry">
-                <a href="#">High to Low Sqr Ft</a>
-            </li>
-            <li class="drop-down-entry">
-                <a href="#">Low to High Sqr Ft</a>
+                <a onclick="populateProperties('?order=price&sort=desc')" href="#">
+                    High to Low Price
+                </a>
             </li>
             <hr>
             <li class="drop-down-entry">
-                <a href="#">Oldest Listings</a>
+                <a onclick="populateProperties('?order=square_ft&sort=asc')" href="#">
+                    Low to High Sqr Ft
+                </a>
             </li>
             <li class="drop-down-entry">
-                <a href="#">Newest Listings</a>
+                <a onclick="populateProperties('?order=square_ft&sort=desc')" href="#">
+                    High to Low Sqr Ft
+                </a>
+            </li>
+            <hr>
+            <li class="drop-down-entry">
+                <a onclick="populateProperties('?order=time_listed&sort=asc')" href="#">
+                    Oldest Listings
+                </a>
+            </li>
+            <li class="drop-down-entry">
+                <a onclick="populateProperties('?order=time_listed&sort=desc')" href="#">
+                    Newest Listings
+                </a>
             </li>
         </ul>
     </div>

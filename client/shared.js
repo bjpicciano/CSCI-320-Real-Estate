@@ -67,7 +67,6 @@ function appendAnchor(parent, anchor) {
     //display current page different than others
     if (pageName === href) {
         anchor.classList.add("active");
-        anchor.href = "#";
     }
 
     parent.appendChild(anchor);
@@ -98,6 +97,31 @@ function prependElement(parentEle, newEle, referenceEle) {
 function toggleDropDown(parent) {
     const dropDownEle = parent.querySelector(".drop-down");
     toggleEleVisibility(dropDownEle);
+}
+
+/**
+ * Used to filter data from the filter drop-down menu.
+ * @param containerId - the container to put the found elements
+ * @param endpoint - the server's endpoint to get data from, includes get queries
+ */
+function getFilteredData(containerId, endpoint) {
+    const container = document.getElementById(containerId);
+
+    container.innerHTML = "";
+    showElement("loader");
+
+    get(endpoint + query)
+        .then(data => {
+            hideElement("loader");
+            for (let property of data) {
+                createProperty(property);
+            }
+        })
+        .catch(e => {
+            console.error(e);
+            showElement("error-connection");
+            hideElement("loader");
+        });
 }
 
 /**
