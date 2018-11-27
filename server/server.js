@@ -147,6 +147,7 @@ app.get("/topAgents", async (req, res) => {
 });
 
 app.get("/offices", async(req, res) => {
+    const queries = req.query;
     const query = `
         SELECT manager, street_num, street_name, apt_num, city, state, zip,  region,
             count(*) filter (where completed = true ) as completed, count(*) filter (where completed = false ) as pending
@@ -155,7 +156,10 @@ app.get("/offices", async(req, res) => {
         INNER JOIN region on office.region_id = region.id
         LEFT JOIN sale on office.id = sale.office_id
         GROUP BY office.id, address.id, region.id, sale.id
+        ${queries.order && queries.sort ? `ORDER BY ${queries.order} ${queries.sort}` : ""}
     `;
+    console.log(queries.order);
+    console.log(queries.sort);
 
     try{
         const db = await client.query(query);

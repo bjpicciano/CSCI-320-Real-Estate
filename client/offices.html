@@ -20,23 +20,23 @@
 
         <ul class="drop-down hidden">
             <li class="drop-down-entry">
-                <a onclick="" href="#">
+                <a onclick="populateOffices('?order=pending&sort=asc')" href="#">
                     Low to High Pending Sale
                 </a>
             </li>
             <li class="drop-down-entry">
-                <a onclick="" href="#">
+                <a onclick="populateOffices('?order=pending&sort=desc')" href="#">
                     High to Low Pending Sale
                 </a>
             </li>
             <hr>
             <li class="drop-down-entry">
-                <a onclick="" href="#">
+                <a onclick="populateOffices('?order=completed&sort=asc')" href="#">
                     Low to High Completed Sale
                 </a>
             </li>
             <li class="drop-down-entry">
-                <a onclick="" href="#">
+                <a onclick="populateOffices('?order=completed&sort=desc')" href="#">
                     High to Low Completed Sale
                 </a>
             </li>
@@ -44,9 +44,10 @@
     
      <!-- error is always on page, show/hide depending on state in js -->
     <p id="error-connection" class="error hidden">An error has occurred: Unable to load data</p>
-
+    
+    <div id="loader"></div>
     <div id="office-container">
-        <div id="loader"></div>
+
     <div>
 </body>
 </html>
