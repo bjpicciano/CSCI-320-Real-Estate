@@ -1,8 +1,9 @@
 window.onload = () => {
     loadNavbar();
 
-    get("clientsAgent")
+    get("clients")
       .then(data => {
+          console.table(data[0]);
           hideElement("loader");
           for(let client of data) {
               createClient(client);
@@ -10,6 +11,8 @@ window.onload = () => {
       })
       .catch(e => {
           console.error(e);
+          showElement("error-connection");
+          hideElement("loader");
       });
 };
 
@@ -18,23 +21,24 @@ function createClient(client){
     const clientHTML = `
         <div class="client">
             <div class="client-title">
-                <h3 class="client-name">${client.first_name} ${client.last_name}</h3>
+                <h3>${client.first_name} ${client.last_name}</h3>
+                <p class="street-address-1">${client.street_num} ${client.street_name} ${client.apt_num ? "Apt " + client.apt_num : ""}</p>
+                <p class="street-address-2">${client.city}, ${client.state} ${client.zip}</p>
+                <button onclick="location.href='mailto:${client.email}'">Contact</button>
             </div>
 
             <div class="client-description">
-                <div class="description">
-                    <b class="client-name">Phone Number</b>
-                    <p class="client-value">${client.phone_number}</p>
-                </div>
-                <div class="description">
-                    <b class="client-name">Email</b>
-                    <p class="client-value">${client.email}</p>
-                </div>
-                <div class="description">
-                    <b class="client-name">Home Address</b>
-                    <p class="client-value">${client.street_num} ${client.street_name} ${client.apt_num ? "Apt " + client.apt_num : ""}</p>
-                    <p class="client-value">${client.city}, ${client.state} ${client.zip}</p>
-                </div>
+                <!-- forgive me; nested templates ahead -->
+                ${client.time_listed ? `
+                    <h3>Properties</h3>
+                    <p class="price">$${client.price}</p>
+                    <p class="listed-date">Listed on ${new Date(client.time_listed).toISOString().slice(0,10)}</p>
+                    ${client.time_sold ? `
+                        <p class="listed-date">Sold on ${new Date(client.time_sold).toISOString().slice(0,10)}</p>
+                    ` : ""}
+                ` : ""}
+                <h3>Agent</h3>
+                <p>${client.agent_first_name} ${client.agent_last_name}</p>
             </div>
         </div>
     `;

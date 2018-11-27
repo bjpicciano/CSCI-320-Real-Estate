@@ -90,7 +90,48 @@ app.get("/availableProperties", async (req, res) => {
     }
 });
 
+app.get("/clients", async (req, res) => {
+    const queries = req.query;
+    const query = `
+        SELECT
+               client.first_name,
+               client.last_name,
+               client.phone_number,
+               client.email,
+               address.street_num,
+               address.street_name,
+               address.apt_num,
+               address.city,
+               address.state,
+               address.zip,
+               agent.first_name as agent_first_name,
+               agent.last_name as agent_last_name,
+               property.time_listed,
+               property.time_sold,
+               property.price
+        FROM client
+        INNER JOIN address ON home_address = address.id
+        INNER JOIN agent ON agent_id = agent.id
+        LEFT JOIN property ON client.id = property.client_id
+        ${queries.order && queries.sort ? `ORDER BY ${queries.order} ${queries.sort}` : ""}
+    `;
+
+    try {
+        const db = await client.query(query);
+        const data = db.rows;
+        res.send(JSON.stringify(data));
+    } catch (e) {
+        const msg = {
+            message: "Unable to query database",
+            error: e.message
+        };
+        console.error(e.stack);
+        res.status(500).send(msg);
+    }
+});
+
 app.get("/salesAgent", async (req, res) => {
+	//need to return for specific agent?
 	const query = `
 		SELECT
                sell_price,
@@ -101,7 +142,7 @@ app.get("/salesAgent", async (req, res) => {
         FROM sale
 		INNER JOIN property ON property.id = sale.property_id
 		INNER JOIN client ON client.id = sale.seller_id
-		WHERE agent_id = `+agent
+		`
 		;
     
 
@@ -126,12 +167,9 @@ app.get("/topAgents", async (req, res) => {
 			   last_name,
 			   number_of_sales
         FROM agent
-		WHERE agent.id = client.agent_id
 		ORDER BY number_of_sales DESC`
 		;
-    
 
-	
     try {
         const db = await client.query(query);
         const data = db.rows;

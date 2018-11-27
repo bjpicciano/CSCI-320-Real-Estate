@@ -3,13 +3,13 @@
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-#property-container {
+#property-container, #client-container {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.property {
+.property, .client {
     display: flex;
     text-align: center;
     border: 1px black solid;
@@ -17,12 +17,16 @@
     margin-bottom: 25px;
 }
 
-.property-title {
+.property-title, .client-title {
     flex: 3;
     border-right: 1px black solid;
 }
 
-.property-description {
+.client-title > button {
+    margin-bottom: 10px;
+}
+
+.property-description, .client-description {
     flex: 2;
 }
 
@@ -56,7 +60,6 @@
 
 .toolbar > .active {
     font-weight: bold;
-    box-shadow: 0 1px 1px black;
     color: blue;
 }
 
@@ -135,3 +138,40 @@
         transform: rotate(360deg);
     }
 }
+
+#sales-container{
+	width: 50%;
+	float: left;
+}
+
+#agents-container{
+	width: 50%;
+	float: right;
+}
+
+#sale_title{
+	margin-left: 12%;
+}
+
+.sale{
+	padding: 2px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 75%;
+	margin-left: 12%;
+	margin-bottom: 5%;
+	background-color: #e9e6ff;
+}
+
+
+.rank{
+	padding:2px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 40%;
+	margin-bottom: 5%;
+	margin-right: 9%;
+	background-color: #e9e6ff;
+}
+
+
+
+

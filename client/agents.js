@@ -29,12 +29,9 @@ function createSale(sale) {
     const saleHTML = `
         <div class="sale">
             <div class="sale-info">
-                <h3 class="s_agent">${sale.time_sold}</h3>
-                <h3 class="s_price">${sale.sell_price}</h3>
-				<h2 class="title">Client Info:</h2>
-				<h3 class="s_agent">${sale.first_name}</h3>
-                <h3 class="s_price">${sale.last_name}</h3>
-				<h3 class="s_price">${sale.email}</h3>
+                <h3 class="s_agent">Price: $${sale.sell_price} Time Sold: ${sale.time_sold}</h3>
+				<h3 class="title">Client Info: ${sale.first_name} ${sale.last_name} - ${sale.email}</h3>
+			
             </div>
             
     
@@ -51,10 +48,8 @@ function createRank(agent) {
     const accountType = getAccountType();
     const agentsHTML = `
         <div class="rank">
-                <h3 class="r_fn">${agent.first_name}</h3>
-                <h3 class="r_ln">${agent.last_name}</h3>
-				<h3 class="r_num">${agent.number_of_sales}</h3>
-   
+                <h3 class="r_fn">${agent.first_name} ${agent.last_name}: ${agent.number_of_sales}</h3>
+
         </div>
     `;
     
