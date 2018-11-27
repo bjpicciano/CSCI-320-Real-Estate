@@ -18,9 +18,6 @@
     <!-- navbar is prepended to the top before the h1-->
     <h1>Available Properties for Sale</h1>
 
-    <!-- error is always on page, show/hide depending on state in js -->
-    <p id="error-connection" class="error hidden">An error has occurred: Unable to load data</p>
-
     <div class="filter-container" onclick="toggleDropDown(this)">
         <i class="fas fa-filter filter"></i>
         <label>Filter</label>
@@ -60,6 +57,9 @@
             </li>
         </ul>
     </div>
+
+    <!-- error is always on page, show/hide depending on state in js -->
+    <p id="error-connection" class="error hidden">An error has occurred: Unable to load data</p>
 
     <div id="loader"></div>
     <div id="property-container">

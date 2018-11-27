@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Clients</title>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="site.css">
 
     <script src="api.js"></script>
@@ -13,9 +14,52 @@
 </head>
 <body>
     <h1>Clients</h1>
-        <div id="client-container">
-            <div id="loader"></div>
-        <!--Populated by JS-->
-        </div>
+
+    <div class="filter-container hidden" onclick="toggleDropDown(this)">
+        <i class="fas fa-filter filter"></i>
+        <label>Filter</label>
+
+        <ul class="drop-down hidden">
+            <li class="drop-down-entry">
+                <a onclick="" href="#">
+                    Low to High Price
+                </a>
+            </li>
+            <li class="drop-down-entry">
+                <a onclick="" href="#">
+                    High to Low Price
+                </a>
+            </li>
+            <hr>
+            <li class="drop-down-entry">
+                <a onclick="" href="#">
+                    Low to High Sqr Ft
+                </a>
+            </li>
+            <li class="drop-down-entry">
+                <a onclick="" href="#">
+                    High to Low Sqr Ft
+                </a>
+            </li>
+            <hr>
+            <li class="drop-down-entry">
+                <a onclick="" href="#">
+                    Oldest Listings
+                </a>
+            </li>
+            <li class="drop-down-entry">
+                <a onclick="" href="#">
+                    Newest Listings
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <p id="error-connection" class="error hidden">An error has occurred: Unable to load data</p>
+
+    <div id="loader"></div>
+    <div id="client-container">
+        <!-- Populated by index.js -->
+    </div>
 </body>
 </html>
